@@ -25,12 +25,19 @@
 }
 
 .input-nbr{
-  margin-left: 70px;
+ 
   padding: 5px;
  margin-bottom: 15px;
+margin-right:15px;
+ width: 100px;
+ margin-left: 15px;
+
 
 }
-
+.drp-op{
+  margin-right: 15px;
+ 
+}
 
 .lbl-result{
   margin-right: 1px;
@@ -73,7 +80,7 @@ margin-right: auto;
 background-color: #BCB8B8;
 
 }
-.inputs{
-  margin-top: 15px;
-  float: left;
+
+.TodoForm{
+  margin-top: 10px;
 }
