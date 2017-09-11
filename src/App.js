@@ -13,8 +13,12 @@ class App extends Component {
     number2:'',
     result:'',
     operator:'',
-    resp:''
+    resp:'',
+    selectValue:'+'
    
+  }
+  handleChangeDropdown = (evt) =>{
+    this.setState({selectValue:evt.target.value});
   }
 
    handleSubmit =(evt) =>{
@@ -72,6 +76,7 @@ number1:this.state.number1})
 
 
   render() { 
+     var message='You selected '+this.state.selectValue;
     return (
       <div className="App">
         <div className="App-header">
@@ -92,12 +97,24 @@ number1:this.state.number1})
           <TodoButton handleOperator={this.handleOperator}/>
           </div>
 
-          <div className="answer">
+        <div className="answer">
            <button className="btn-result" type="submit" onClick={this.handleSubmit}>Result</button>
           <label className="lbl-result">{this.state.number1}{this.state.operator}{this.state.number2} = {this.state.result}</label>
-   <br/>
+        </div>
 
-          </div>
+       <div className="dropdown">
+         <select value={this.state.selectValue} 
+         onChange={this.handleChangeDropdown} 
+         >
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+             <option value="/">/</option>
+          </select>
+          <p>{message}</p>
+          </div>    
+
+
          </div>
       </div>
     );
