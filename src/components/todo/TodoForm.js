@@ -20,8 +20,8 @@ export const TodoForm = (props) => (
     </form>)
     
 
-TodoForm.propTypes = {
-	number1 : React.PropTypes.number,
-	number2 : React.PropTypes.number,
- 	selectValue : React.PropTypes.string
- }
+// TodoForm.propTypes = {
+// 	number1 : React.PropTypes.number,
+// 	number2 : React.PropTypes.number,
+//  	selectValue : React.PropTypes.string
+//  }
