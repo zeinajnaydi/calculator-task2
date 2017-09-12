@@ -13,8 +13,12 @@ class App extends Component {
     number2:'',
     result:'',
     operator:'',
-    resp:''
+    resp:'',
+    selectValue:''
    
+  }
+  handleChangeDropdown = (evt) =>{
+    this.setState({selectValue:evt.target.value});
   }
 
    handleSubmit =(evt) =>{
@@ -23,81 +27,55 @@ class App extends Component {
   //parseInt tranform string to int
 const nbr1 =parseInt(this.state.number1,10)
 const nbr2 = parseInt(this.state.number2,10)
-const newResult=''
-  
-console.log("operator:" +this.state.operator)
-switch (this.state.operator){
-    case '+':
-  this.setState({ result : addition(nbr1,nbr2)}) 
-          break;
-    case '-':
+			switch (this.state.selectValue){
+			case '+':
+			this.setState({ result : addition(nbr1,nbr2)}) 
+			      break;
+			case '-':
 
-  this.setState({ result : sub(nbr1,nbr2)}) 
- break;
-    case '/':
-    this.setState({ result : div(nbr1,nbr2)}) 
- break;
-    case '*':
-   this.setState({ result : mult(nbr1,nbr2)}) 
- break;
+			this.setState({ result : sub(nbr1,nbr2)}) 
+			break;
+			case '/':
+			this.setState({ result : div(nbr1,nbr2)}) 
+			break;
+			case '*':
+			this.setState({ result : mult(nbr1,nbr2)}) 
+			break;
+			}}
 
-      // this.setState({number1: this.state.number1, number2:this.state.number2})
-  // this.setState({result : newResult})   
- }
-}
     handleInputChangeNbr1=(evt) =>{
     this.setState({
     number1 :evt.target.value
-   
-    })
-    }
+    })}
 
     handleInputChangeNbr2=(evt) =>{
     this.setState({
     number2 :evt.target.value
     
-    })
-     
-    }
-
-handleOperator=(evt,id)=>{
-  evt.preventDefault()
-this.setState({
-operator:evt.target.id,
-number2:this.state.number2,
-number1:this.state.number1})
-
-}
-
+    })}
 
 
   render() { 
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Simple Calculator</h2>
-        </div>
+				<div className="App">
+				  <div className="App-header">
+				  <img src={logo} className="App-logo" alt="logo" />
+				   <h2>Simple Calculator</h2>
+				  </div>
        
           
-          <div className="calc-form">
+         <div className="calc-form">
          <TodoForm handleInputChangeNbr1 = {this.handleInputChangeNbr1}
          handleInputChangeNbr2 = {this.handleInputChangeNbr2}
          number1 = {this.state.number1}
-          number2 = {this.state.number2}/>
+          number2 = {this.state.number2}
+         selectValue = {this.state.selectValue}
+         handleChangeDropdown = { this.handleChangeDropdown}/>
 
-         
-
-          <div className="btn-calc">
-          <TodoButton handleOperator={this.handleOperator}/>
-          </div>
-
-          <div className="answer">
+        <div className="answer">
            <button className="btn-result" type="submit" onClick={this.handleSubmit}>Result</button>
-          <label className="lbl-result">{this.state.number1}{this.state.operator}{this.state.number2} = {this.state.result}</label>
-   <br/>
-
-          </div>
+          <label className="lbl-result">{this.state.number1}{this.state.selectValue}{this.state.number2} = {this.state.result}</label>
+        </div>
          </div>
       </div>
     );
